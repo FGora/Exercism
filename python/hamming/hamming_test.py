@@ -39,7 +39,7 @@ class HammingTest(unittest.TestCase):
 
     # Utility functions
     def assertRaisesWithMessage(self, exception):
-        return self.assertRaisesRegex(exception, r".+")
+        return self.assertRaisesRegexp(exception, r".+")
 
 
 if __name__ == "__main__":
