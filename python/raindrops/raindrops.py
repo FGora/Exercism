@@ -1,11 +1,11 @@
 def convert(number):
-    res = ""
+    result = ""
     if number % 3 ==0:
-        res = res + "Pling"
+        result += "Pling"
     if number % 5 ==0:
-        res = res + "Plang"
+        result += "Plang"
     if number % 7 ==0:
-        res = res + "Plong"   
-    if res == "":
+        result += "Plong"   
+    if result == "":
         return str(number)
-    return res         
+    return result         
