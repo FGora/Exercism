@@ -1,10 +1,19 @@
 def latest(scores):
-    pass
+    return scores[len(scores)-1]
 
 
 def personal_best(scores):
-    pass
+    personalbest = 0
+    for result in scores:
+        if result > personalbest:
+            personalbest = result
+    return personalbest        
 
 
 def personal_top_three(scores):
-    pass
+    PersonalTopThree = []
+    for result in scores:
+        PersonalTopThree.append(result)
+        PersonalTopThree.sort(reverse=True)
+        PersonalTopThree = [PersonalTopThree[i] for i in range(min(len(PersonalTopThree),3))]
+    return PersonalTopThree                
