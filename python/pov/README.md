@@ -1,34 +1,42 @@
-# Word Count
+# POV
 
-Given a phrase, count the occurrences of each _word_ in that phrase.
+Reparent a graph on a selected node.
 
-For the purposes of this exercise you can expect that a _word_ will always be one of:
-
-1. A _number_ composed of one or more ASCII digits (ie "0" or "1234") OR
-2. A _simple word_ composed of one or more ASCII letters (ie "a" or "they") OR
-3. A _contraction_ of two _simple words_ joined by a single apostrophe (ie "it's" or "they're")
-
-When counting words you can assume the following rules:
-
-1. The count is _case insensitive_ (ie "You", "you", and "YOU" are 3 uses of the same word)
-2. The count is _unordered_; the tests will ignore how words and counts are ordered
-3. Other than the apostrophe in a _contraction_ all forms of _punctuation_ are ignored
-4. The words can be separated by _any_ form of whitespace (ie "\t", "\n", " ")
-
-For example, for the phrase `"That's the password: 'PASSWORD 123'!", cried the Special Agent.\nSo I fled.` the count would be:
+This exercise is all about re-orientating a graph to see things from a different
+point of view. For example family trees are usually presented from the
+ancestor's perspective:
 
 ```text
-that's: 1
-the: 2
-password: 2
-123: 1
-cried: 1
-special: 1
-agent: 1
-so: 1
-i: 1
-fled: 1
+    +------0------+
+    |      |      |
+  +-1-+  +-2-+  +-3-+
+  |   |  |   |  |   |
+  4   5  6   7  8   9
 ```
+
+But the same information can be presented from the perspective of any other node
+in the graph, by pulling it up to the root and dragging its relationships along
+with it. So the same graph from 6's perspective would look like:
+
+```text
+        6
+        |
+  +-----2-----+
+  |           |
+  7     +-----0-----+
+        |           |
+      +-1-+       +-3-+
+      |   |       |   |
+      4   5       8   9
+```
+
+This lets us more simply describe the paths between two nodes. So for example
+the path from 6-9 (which in the first graph goes up to the root and then down to
+a different leaf node) can be seen to follow the path 6-2-0-3-9
+
+This exercise involves taking an input graph and re-orientating it from the point
+of view of one of the nodes.
+
 
 ## Exception messages
 
@@ -46,10 +54,10 @@ raise Exception("Meaningful message indicating the source of the error")
 
 ## Running the tests
 
-To run the tests, run `pytest word_count_test.py`
+To run the tests, run `pytest pov_test.py`
 
 Alternatively, you can tell Python to run the pytest module:
-`python -m pytest word_count_test.py`
+`python -m pytest pov_test.py`
 
 ### Common `pytest` options
 
@@ -61,7 +69,7 @@ For other options, see `python -m pytest -h`
 
 ## Submitting Exercises
 
-Note that, when trying to submit an exercise, make sure the solution is in the `$EXERCISM_WORKSPACE/python/word-count` directory.
+Note that, when trying to submit an exercise, make sure the solution is in the `$EXERCISM_WORKSPACE/python/pov` directory.
 
 You can find your Exercism workspace by running `exercism debug` and looking for the line that starts with `Workspace`.
 
@@ -70,7 +78,7 @@ please see [Running the Tests](http://exercism.io/tracks/python/tests).
 
 ## Source
 
-This is a classic toy problem, but we were reminded of it by seeing it in the Go Tour.
+Adaptation of exercise from 4clojure [https://www.4clojure.com/](https://www.4clojure.com/)
 
 ## Submitting Incomplete Solutions
 
